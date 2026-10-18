@@ -2,7 +2,7 @@ import Banner from '@/components/Banner';
 import Footer from '@/components/Footer';
 import Gallery from '@/components/Gallery';
 import Partners from '@/components/Partners';
-import Ponudba from '@/components/Ponudba';
+
 import Projects from '@/components/Projects';
 import Social from '@/components/Social';
 import Experience from '@/components/Storitve';
