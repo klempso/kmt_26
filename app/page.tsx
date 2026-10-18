@@ -19,7 +19,7 @@ export default async function Home() {
 		<>
 			<Banner />
 			<Partners />
-			<Gallery heading='Galerija' subtitle='Izbor naših postavitev po Evropi' />
+			<Gallery />
 
 			<Projects />
 			<Experience />
