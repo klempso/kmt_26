@@ -60,7 +60,7 @@ const Experience = () => {
 		<section className='kmt-exp' id='experience' ref={rootRef}>
 			<header className='kmt-exp-header'>
 				<h1 className='kmt-title'>Od ideje do realizacije</h1>
-				<h2 className='kmt-subtitle'>Le nekaj korakov do novih prostorov</h2>
+				<h2 className='kmt-subtitle'>Le nekaj korakov do novih prostoro</h2>
 			</header>
 
 			<div className='kmt-exp-list'>
