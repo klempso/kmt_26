@@ -1,0 +1,195 @@
+.kmt-ponudba {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(2rem, 5vw, 3.5rem);
+	align-items: start;
+	padding-block: clamp(3rem, 8vw, 6rem);
+}
+.kmt-ponudba-title {
+	grid-column: 1/-1;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+/* --- left: stacked cross-fading images --- */
+
+.kmt-ponudba-left {
+	position: relative;
+	aspect-ratio: 4 / 3;
+	border-radius: 16px;
+	overflow: hidden;
+	background: rgb(0 0 0 / 0.04);
+}
+
+.kmt-ponudba-media {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kmt-ponudba-media[data-active='true'] {
+	opacity: 1;
+}
+
+.kmt-ponudba-media img {
+	object-fit: cover;
+}
+
+/* --- right: accordion --- */
+.kmt-ponudba-right {
+	align-self: center;
+}
+
+.kmt-acc-item {
+	position: relative;
+	border-bottom: 1px solid rgb(11 11 11 / 0.14);
+}
+
+/* The filling line, sat on top of the border */
+.kmt-acc-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+	height: 2px;
+	width: 0;
+	background: var(--color-orange);
+	pointer-events: none;
+}
+
+.kmt-acc-item[data-open]::after {
+	animation: kmtAccProgress var(--rotate-ms, 8000ms) linear forwards;
+}
+
+@keyframes kmtAccProgress {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
+
+.kmt-acc-trigger {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	padding: 1.5rem 0.25rem;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	font-family: inherit;
+	color: var(--ink);
+	transition: opacity 0.2s ease;
+}
+
+.kmt-acc-trigger:hover {
+	opacity: 0.65;
+}
+
+.kmt-acc-trigger:focus-visible {
+	outline: 2px solid var(--ink);
+	outline-offset: 2px;
+}
+
+.kmt-acc-num {
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	color: var(--color-orange);
+	flex-shrink: 0;
+}
+
+.kmt-acc-icon {
+	color: var(--color-orange);
+	flex-shrink: 0;
+	transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.kmt-acc-item[data-state='open'] .kmt-acc-icon {
+	transform: scale(1.15);
+}
+
+.kmt-acc-title {
+	flex: 1;
+	font-size: clamp(1.4rem, 2vw, 1.7rem);
+	font-weight: 500;
+	letter-spacing: 0.01em;
+	line-height: 1.25;
+}
+
+/* Radix exposes the measured height as a variable — no magic numbers */
+
+.kmt-ponudba-placeholder {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.02));
+}
+
+.kmt-acc-panel {
+	overflow: hidden;
+}
+
+.kmt-acc-panel[data-open] {
+	animation: kmtAccOpen 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kmt-acc-panel[data-closed] {
+	animation: kmtAccClose 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes kmtAccOpen {
+	from {
+		height: 0;
+		opacity: 0;
+	}
+	to {
+		height: var(--accordion-panel-height);
+		opacity: 1;
+	}
+}
+
+@keyframes kmtAccClose {
+	from {
+		height: var(--accordion-panel-height);
+		opacity: 1;
+	}
+	to {
+		height: 0;
+		opacity: 0;
+	}
+}
+
+.kmt-acc-item[data-open] .kmt-acc-icon {
+	transform: scale(1.15);
+}
+
+.kmt-acc-panel p {
+	margin: 0 0 1.5rem 3.4rem;
+	max-width: 46ch;
+	font-size: 1rem;
+	line-height: 1.6;
+	color: rgb(11 11 11 / 0.65);
+	text-wrap: pretty;
+}
+
+@media (max-width: 48rem) {
+	.kmt-ponudba {
+		grid-template-columns: 1fr;
+	}
+	.kmt-acc-panel p {
+		margin-left: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.kmt-ponudba-media {
+		transition: none;
+	}
+	.kmt-acc-panel {
+		animation: none !important;
+	}
+}

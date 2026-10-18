@@ -1,0 +1,260 @@
+.kmt-exp {
+	--badge: 70px;
+	--col-gap: 2.5rem;
+	--hair: rgb(11 11 11 / 0.07);
+	padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.kmt-exp-header {
+	margin-bottom: clamp(2.5rem, 6vw, 6rem);
+	text-align: center;
+}
+
+/* ---------- track ---------- */
+
+.kmt-exp-list {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2rem, 4vw, 3.5rem);
+	max-width: 85%;
+	margin-inline: auto;
+}
+
+.kmt-exp-track {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 28px;
+	bottom: 28px;
+	width: 1px;
+	background: rgb(11 11 11 / 0.1);
+}
+
+.kmt-exp-line {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: var(--ink);
+	transform: scaleY(0);
+}
+
+/* ---------- row ---------- */
+
+.kmt-exp-row {
+	display: grid;
+	grid-template-columns: 1fr var(--badge) 1fr;
+	gap: 0 var(--col-gap);
+	align-items: stretch;
+}
+
+/* ---------- the glow ----------
+   Two backgrounds on one element: a solid fill clipped to the padding box,
+   and the conic gradient clipped to the border box. The 2px transparent
+   border is the only place the gradient shows, so it reads as a ring.
+   --arc is grey at rest and orange on hover; --start is a unitless
+   number of degrees written by the mouse handler. */
+
+.kmt-exp-card {
+	--start: 0;
+	--arc: var(--hair);
+	position: relative;
+	border: 1px solid transparent;
+	border-radius: 12px;
+}
+
+.kmt-exp-row:hover .kmt-exp-card {
+	--arc: var(--color-orange);
+}
+
+/* ---------- media ---------- */
+
+.kmt-exp-media {
+	position: relative;
+	aspect-ratio: 4 / 3;
+	border-radius: 10px;
+	overflow: hidden;
+	background: rgb(11 11 11 / 0.04);
+}
+
+.kmt-exp-media img {
+	object-fit: cover;
+	object-position: center !important;
+
+	transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kmt-exp-row:hover .kmt-exp-media img {
+	transform: scale(1.03);
+}
+
+.kmt-exp-media-empty {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(135deg, rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.02));
+}
+
+/* ---------- spine ---------- */
+
+.kmt-exp-spine {
+	display: flex;
+	align-self: start;
+	justify-content: center;
+	padding-top: 0.25rem;
+}
+
+.kmt-exp-badge {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	width: var(--badge);
+	height: var(--badge);
+	border-radius: 50%;
+	border: 1px solid rgb(11 11 11 / 0.12);
+	background: #fff;
+	color: var(--ink);
+	flex-shrink: 0;
+	transition:
+		border-color 0.3s ease,
+		color 0.3s ease;
+}
+
+.kmt-exp-row:hover .kmt-exp-badge {
+	border-color: var(--color-orange);
+	color: var(--color-orange);
+}
+
+/* ---------- text ---------- */
+
+.kmt-exp-card {
+	align-self: center;
+	height: 80%;
+	padding: 1.75rem 1.9rem;
+	min-width: 0;
+	overflow: hidden;
+	background:
+		linear-gradient(#fff, #fff) padding-box,
+		conic-gradient(
+				from calc((var(--start) - 60) * 1deg),
+				var(--hair) 0deg,
+				var(--arc) 60deg,
+				var(--hair) 140deg,
+				var(--hair) 360deg
+			)
+			border-box;
+}
+
+/* The index sits behind the content as a large, near-invisible numeral */
+.kmt-exp-index {
+	position: absolute;
+	top: 1rem;
+	right: 1.2rem;
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.06em;
+	color: var(--color-orange);
+	opacity: 0.7;
+	pointer-events: none;
+	user-select: none;
+}
+
+.kmt-exp-head {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.9rem;
+}
+
+.kmt-exp-date {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-orange);
+}
+
+/* short rule before the date */
+.kmt-exp-date::before {
+	content: '';
+	width: 18px;
+	height: 1px;
+	background: currentColor;
+}
+
+.kmt-exp-title {
+	margin: 0;
+	padding-right: 4.25rem; /* clears the numeral */
+	font-size: clamp(1.25rem, 2vw, 1.5rem);
+	font-weight: 700;
+	letter-spacing: -0.035em;
+	line-height: 1.15;
+	color: var(--ink);
+	text-wrap: balance;
+}
+
+.kmt-exp-org {
+	margin: 0.35rem 0 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: rgb(11 11 11 / 0.45);
+}
+
+.kmt-exp-description {
+	margin: 1.15rem 0 0;
+	padding: 1.15rem 0 0;
+	border-top: 1px solid var(--hair);
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	max-width: 58ch;
+	color: var(--color-text);
+	font-size: 1.1rem;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 60rem) {
+	.kmt-exp {
+		--badge: 44px;
+	}
+
+	.kmt-exp-row {
+		grid-template-columns: var(--badge) 1fr;
+		gap: 0 1rem;
+	}
+
+	.kmt-exp-media {
+		grid-column: 1 / -1;
+		aspect-ratio: 16 / 9;
+		margin-bottom: 1.25rem;
+	}
+
+	/* stacked on mobile — nothing to match against */
+	.kmt-exp-card {
+		align-self: stretch;
+		height: auto;
+	}
+
+	.kmt-exp-track {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.kmt-exp-row:hover .kmt-exp-media img {
+		transform: none;
+	}
+
+	.kmt-exp-badge {
+		transition: none;
+	}
+
+	.kmt-exp-line {
+		transform: scaleY(1);
+	}
+}

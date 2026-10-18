@@ -1,0 +1,368 @@
+/* ============ social ============ */
+
+.kmt-social {
+	grid-column: full !important;
+	background: var(--background-color-secondary);
+	padding-block: clamp(3rem, 8vw, 6rem);
+	padding-inline: var(--gap);
+}
+
+.kmt-social-container {
+	max-width: var(--main-width);
+	margin-inline: auto;
+}
+
+/* ---------- header ---------- */
+
+.kmt-social-header {
+	max-width: 36rem;
+	margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+	text-align: center;
+}
+
+.kmt-social-h {
+	margin: 0;
+	font-size: clamp(2rem, 4vw, 3rem);
+	font-weight: 600;
+	letter-spacing: -0.035em;
+	line-height: 1.05;
+	color: var(--ink);
+	text-wrap: balance;
+}
+
+.kmt-social-sub {
+	margin: 0.75rem 0 0;
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	color: rgb(11 11 11 / 0.5);
+	text-wrap: pretty;
+}
+
+/* ---------- grid ---------- */
+
+.kmt-social-grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: clamp(1.25rem, 2.5vw, 2rem);
+	align-items: stretch;
+}
+
+.kmt-social-stack {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* ---------- card shell ---------- */
+
+.kmt-social-card {
+	display: flex;
+	flex-direction: column;
+	padding: clamp(1.5rem, 2.5vw, 2rem);
+	border: 1px solid rgb(11 11 11 / 0.06);
+	border-radius: 1.5rem;
+	background: #fff;
+	box-shadow: var(--shadow-sm);
+}
+
+.kmt-social-feature {
+	gap: 1.5rem;
+}
+
+/* the two stacked ones are links, so they lift */
+.kmt-social-link {
+	flex: 1;
+	justify-content: space-between;
+	gap: 2rem;
+	text-decoration: none;
+	color: inherit;
+	transition:
+		transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+		box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kmt-social-link:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lift);
+}
+
+.kmt-social-link:focus-visible {
+	outline: 2px solid var(--ink);
+	outline-offset: 3px;
+}
+
+/* ---------- top row ---------- */
+
+.kmt-social-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.kmt-social-id {
+	display: flex;
+	align-items: center;
+	gap: 0.85rem;
+	min-width: 0;
+}
+
+.kmt-social-tile {
+	display: grid;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	border-radius: 0.7rem;
+	flex-shrink: 0;
+}
+
+.kmt-social-tile-yt {
+	background: rgb(239 68 68 / 0.09);
+	color: #dc2626;
+}
+
+.kmt-social-tile-ig {
+	background: rgb(219 39 119 / 0.09);
+	color: #db2777;
+}
+
+.kmt-social-tile-fb {
+	background: rgb(37 99 235 / 0.09);
+	color: #2563eb;
+}
+
+.kmt-social-name {
+	margin: 0;
+	font-size: 0.9375rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--ink);
+}
+
+.kmt-social-meta {
+	margin: 0.15rem 0 0;
+	font-size: 0.75rem;
+	color: rgb(11 11 11 / 0.45);
+}
+
+.kmt-social-arrow {
+	flex-shrink: 0;
+	color: rgb(11 11 11 / 0.2);
+	transition:
+		color 0.25s ease,
+		transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kmt-social-link:hover .kmt-social-arrow {
+	color: var(--color-orange);
+	transform: translate(3px, -3px);
+}
+
+/* ---------- subscribe button ---------- */
+
+.kmt-social-btn {
+	flex-shrink: 0;
+	padding: 0.55rem 1.15rem;
+	border-radius: 100px;
+	background: var(--ink);
+	color: #fff;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-decoration: none;
+	white-space: nowrap;
+	transition: background-color 0.25s ease;
+}
+
+.kmt-social-btn:hover {
+	background: var(--color-orange);
+}
+
+.kmt-social-btn:focus-visible {
+	outline: 2px solid var(--ink);
+	outline-offset: 3px;
+}
+
+/* ---------- video ---------- */
+
+.kmt-social-video {
+	position: relative;
+	display: block;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--tile-radius);
+	overflow: hidden;
+	background: rgb(11 11 11 / 0.05);
+	text-decoration: none;
+}
+
+.kmt-social-video img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	filter: grayscale(1);
+	transition:
+		filter 0.5s ease,
+		transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kmt-social-video:hover img {
+	filter: grayscale(0);
+	transform: scale(1.03);
+}
+
+.kmt-social-veil {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	background: rgb(0 0 0 / 0.2);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.kmt-social-video:hover .kmt-social-veil {
+	opacity: 1;
+}
+
+.kmt-social-play {
+	display: grid;
+	place-items: center;
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: #fff;
+	color: #dc2626;
+	box-shadow: 0 12px 32px -8px rgb(0 0 0 / 0.45);
+	transform: scale(0.9);
+	transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kmt-social-video:hover .kmt-social-play {
+	transform: scale(1);
+}
+
+/* frosted caption bar */
+.kmt-social-caption {
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+	left: 1rem;
+	padding: 0.85rem 1rem;
+	border-radius: 12px;
+	background: rgb(255 255 255 / 0.72);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--ink);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ---------- stacked card bodies ---------- */
+
+.kmt-social-title {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	color: var(--ink);
+}
+
+.kmt-social-copy {
+	margin: 0.3rem 0 1.5rem;
+	font-size: 0.875rem;
+	line-height: 1.55;
+	color: rgb(11 11 11 / 0.5);
+	text-wrap: pretty;
+}
+
+/* overlapping avatar row */
+.kmt-social-avatars {
+	display: flex;
+}
+
+.kmt-social-avatar {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	background: linear-gradient(135deg, #d7d4cf, #ebe9e6);
+	flex-shrink: 0;
+}
+
+.kmt-social-avatar + .kmt-social-avatar {
+	margin-left: -12px;
+}
+
+.kmt-social-avatar-more {
+	display: grid;
+	place-items: center;
+	background: rgb(11 11 11 / 0.05);
+	font-size: 0.625rem;
+	font-weight: 700;
+	color: rgb(11 11 11 / 0.45);
+}
+
+.kmt-social-stat {
+	display: flex;
+	align-items: baseline;
+	gap: 0.6rem;
+}
+
+.kmt-social-stat-num {
+	font-size: 1.75rem;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: var(--ink);
+}
+
+.kmt-social-stat-cap {
+	font-size: 0.6875rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: rgb(11 11 11 / 0.35);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 60rem) {
+	.kmt-social-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.kmt-social-stack {
+		flex-direction: row;
+	}
+}
+
+@media (max-width: 40rem) {
+	.kmt-social-stack {
+		flex-direction: column;
+	}
+
+	.kmt-social-caption {
+		white-space: normal;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.kmt-social-link,
+	.kmt-social-arrow,
+	.kmt-social-video img,
+	.kmt-social-play {
+		transition: none;
+	}
+
+	.kmt-social-link:hover {
+		transform: none;
+	}
+
+	.kmt-social-video:hover img {
+		transform: none;
+	}
+}

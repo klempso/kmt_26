@@ -1,0 +1,70 @@
+.kmt-partners {
+	overflow: hidden;
+	width: 100%;
+	padding-block: clamp(2.5rem, 6vw, 4rem);
+
+	-webkit-mask: linear-gradient(
+		to right,
+		transparent,
+		#000 8%,
+		#000 92%,
+		transparent
+	);
+	mask: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.kmt-partners-carousel {
+	display: flex;
+	width: 100%;
+	display: flex;
+	overflow-x: auto;
+	/* no overflow here */
+}
+.kmt-partners-carousel::-webkit-scrollbar {
+	display: none !important;
+}
+.kmt-partners:hover .kmt-partners-carousel {
+	animation-play-state: paused;
+}
+
+.kmt-group {
+	display: flex;
+	align-items: center;
+	gap: clamp(2.5rem, 5vw, 4.5rem);
+	animation: spinme 15s infinite linear;
+	padding-right: 2.5rem;
+}
+
+.kmt-image-card {
+	display: grid;
+	place-items: center;
+	width: 140px;
+	height: 64px;
+	flex-shrink: 0;
+}
+
+.kmt-image-card img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+
+	transition:
+		filter 0.3s ease,
+		opacity 0.3s ease;
+}
+
+.kmt-image-card:hover img {
+	filter: grayscale(0);
+	opacity: 1;
+}
+
+@keyframes spinme {
+	from {
+		translate: 0;
+	}
+	to {
+		translate: -100%;
+	}
+}
